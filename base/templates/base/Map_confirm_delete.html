@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block body %}
+
+
+
+<form method="POST" class="boxo" action="" method="POST" novalidate>
+    
+    {%  csrf_token %}
+    <p>Voulez-vous vraiment supprimer cet élément? </p>
+    <input type="submit" value="Supprimer"/>
+    <a href="{% url 'fertiMapstocks' %}">
+        <input class="btn btn-danger"  value="Annuler" role="button" /></a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base/base.html' %}
+{% block body %}
+{% load static %}
+{% load i18n %}
+<hr>
+    <div class="col text-center">
+      <div class="content-header">
+   
+        <h1 class="text-center">Domaine    {{ request.user }}</h1>
+        
+    
+    {% if request.user.is_authenticated %}
+<div class="text-align">
+    <a href="{% url 'logout' %}">Deconnexion</a>
+    {% else %}
+    <a href="{% url 'login' %}"></a>
+    {% endif %}
+   </div> 
+  </div>
+  
+
+        <hr>
+       
+    </div> 
+  
+
+  <div class="container">
+    <div class="container text-center">
+     
+      
+        <div class="boxova">
+<h5>Ferti-irrigation</h5>
+        
+      </div>
+      <div class="row">
+        <a href="{% url 'fertigation-create' %}" >
+        <div class="col-md-6 offset-md-3"><button class="text-center mt-2 btn-primary" style="margin: 25px;"> Ajouter une operation </button></a></div>
+      </div>
+    </div>
+
+
+  
+</div>
+      <div class="row">
+        
+          <table class="table1 table-bordered border-danger " style="padding-left: 86px;width: 950px;" >
+            <thead>
+              <tr>
+         
+                <th>Date</th>
+                <th>Ammonitrate</th>
+                <th>Map</th>
+                <th>Sulfat_potasse</th>
+                <th>Calcium</th>
+                <th>Nitrat potasse</th>
+                <th>Organique</th>
+                <th>Quantité eau</th>
+                <th>Dureé irrigation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% language 'fr' %}
+                {% for fertigation in fertigations %} 
+                <h4 style="color: blue;">Domaine:{{ fertigation.domaine}}</h4>               
+              <tr>
+                
+                <td>{{ fertigation.date }}</td>
+                <td>{{ fertigation.ammonitrate|default_if_none:"" }}</td>
+                <td>{{ fertigation.map|default_if_none:"" }}</td>
+                <td>{{ fertigation.sulfate|default_if_none:"" }}</td>
+                <td>{{ fertigation.calcium|default_if_none:"" }}</td>
+                <td>{{ fertigation.case2|default_if_none:"" }}</td>
+                <td>{{ fertigation.organique|default_if_none:"" }}</td>
+                <td>{{ fertigation.qté_eau|default_if_none:"" }}</td>
+                <td>{{ fertigation.dure_irr }}</td>
+               
+                <td><a  href="{% url 'fertigation-update' fertigation.id %}"><img  src="{% static 'img/modifa.png' %}"></a><a  href="{% url 'fertigation-supprime' fertigation.id %}"><img src="{% static 'img/deleter.png' %}"></a>
+                  
+                </td>
+             
+              </tr>
+              
+              {% empty %}
+                  <h6>Pas d'enregistrement</h6> 
+               {% endfor %}
+              {% endlanguage %}
+            
+            </tbody>
+          </table>
+      </main>
+    </div>
+    </div>
+    </div>
+
+
+
+  
+  {% endblock %}

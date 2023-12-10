@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% block body %}
+{% load static %}
+
+{% if user.is_superuser%}
+<h2>Upload and Display Files</h2>
+
+    <form method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Télécharger</button>
+    </form>
+    {% endif%}
+    <h3>Fichiers téléchargés:</h3>
+   
+    
+<table class="tabla table-bordered">
+    <thead>
+        <tr>
+            <th id="center">Date</th>
+            <th id="center">S.No</th>
+            <th id="center">File</th>
+            {% if user.is_superuser%}
+            <th id="center">Delete</th>
+            {% endif%}
+          
+        </tr>
+    </thead>
+    {% for file in files %}
+    <tbody>
+        <tr id="{{file.id}}">
+            <td>{{ file.uploaded_at }}</td>
+            <td style="text-align: center;">{{forloop.counter}}</td>
+            
+            <td><a href="{{ file.file.url }} ">{{ file.file }}</td></a>
+                {% if user.is_superuser%}
+                <td style="text-align: center;"><a href="supprimé_document/{{file.id}}" class="btn btn-primary">Supprimer</a></td>
+        </tr>{% endif%}
+        {% empty %}
+            <li>Aucun élément téléchargé.</li>
+        {% endfor %}   
+    </tbody>
+</table>
+    {% endblock %}

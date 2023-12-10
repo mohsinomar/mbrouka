@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+{% block body %}
+{% load static %}
+<hr class="mt-0" style="padding-top: 0%;">
+    <div class="col text-center">
+      <div class="content-header">
+   
+        <h1 class="text-center">Domaine    {{ request.user }}</h1>
+        
+    
+    {% if request.user.is_authenticated %}
+<div class="text-align">
+    <a href="{% url 'logout' %}">Deconnexion</a>
+    {% else %}
+    <a href="{% url 'login' %}"></a>
+    {% endif %}
+   </div> 
+  </div>
+
+  <div class="container text-center mt-0">
+     
+    <ass="row">
+      <h5 class="boxova">Fiche parcelaire</h5></div>
+      <a href="{% url 'task-create' %}" >
+
+        <button class="text-center mt-2 btn-primary" style="margin: 25px;"> Ajouter une parcelle </button></a></div>
+    </div>
+  </div>
+
+
+
+
+      
+    </div> 
+
+  <div class="container">
+
+      <div class="row">
+       
+          <table class="table1 table-bordered border-danger " style="padding-left: 86px;width: 950px;" >
+            <thead>
+              <tr>
+                <th>Domaine</th>
+                <th>Parcelle</th>
+                <th>Varieté</th>
+                <th>Secteur</th> 
+                <th>Action</th> 
+              </tr>
+            </thead>
+            <tbody>
+             
+                {% for task in tasks %}  
+                            
+              <tr>
+                <td>{{ task.domaine}}</td>
+                <td>{{ task.Parcelle }}</td>
+                <td>{{ task.Varieté }}</td>
+                <td>{{ task.Secteur }}</td>
+                {% if task.user == user %}
+                <td><a  href="{% url 'task-update' task.id %}"><img  src="{% static 'img/modifa.png' %}"></a><a  href="{% url 'task-supprime' task.id %}"><img src="{% static 'img/deleter.png' %}"></a>
+                  {% endif %}
+                  {% empty %}
+                  <h6>Pas d'enregistrement</h6> 
+               {% endfor %}
+                </td>
+             
+              </tr>
+              
+           
+            
+            </tbody>
+          </table>
+      </main>
+    </div>
+    </div>
+    </div>
+
+
+
+  
+  {% endblock %}
+
+
+
+
+
+
+
+
+

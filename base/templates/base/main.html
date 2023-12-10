@@ -1,0 +1,92 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>To Do Items</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link  href="https://fonts.googleleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+      <style>
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6, 
+          p{
+              color: #f00505;
+          }       
+          .header-bar {
+              display: flex;
+              justify-content: space-between;
+              color: #fff;
+              padding: 10px;
+              border-radius: 5px 5px 0 0;
+              
+          }
+
+/*Make alternating colors for the table rows*/
+.table tr:nth-child(odd){
+background:rgb(137, 186, 238)
+}
+
+.table tr:nth-child(even){
+background: #0a0a0a
+}
+
+.table1 tr:nth-child(odd){
+background:rgb(119, 204, 243)
+}
+
+.table1 tr:nth-child(even){
+background: #0a0a0a
+}
+
+
+
+th {
+background-color: #b5b9be;
+color: rgb(10, 4, 4);
+}
+
+          .header-bar a {
+              color: rgb(247, 247, 247);
+              text-decoration: none;
+          }
+
+
+          .boxo {
+    width: 900px;
+    padding: 40px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    background: #65ec65;
+    ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 60px;
+    margin-left: -650px;
+}
+
+
+
+
+
+
+          
+      </style>
+
+  </head>
+  <body>
+  <div class="container">
+    
+      {% block content %}
+      {% endblock content %}
+
+  </div>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+{% block body %}
+{% load static %}
+{% load i18n %}
+<hr>
+    <div class="col text-center">
+      <div class="content-header">
+   
+        <h1 class="text-center">Domaine    {{ request.user }}</h1>
+        
+    
+    {% if request.user.is_authenticated %}
+<div class="text-align">
+    <a href="{% url 'logout' %}">Deconnexion</a>
+    {% else %}
+    <a href="{% url 'login' %}"></a>
+    {% endif %}
+  </div> 
+</div>
+  
+
+      <hr>
+     
+  </div>   
+           
+            
+              <div class="boxova">
+      <h5>Suivi des traitements</h5>
+              
+            </div>
+          
+      
+      
+        
+            <div class="col text-center">     
+  
+    <a href="{% url 'ordereng-create' %}" >
+      <button class="text-center mt-2 btn-primary" style="margin: 25px;"> Ajouter un ordre </button></a>
+</div>
+      <div class="row">
+        <div class="container">       
+          <table class="table1 table-bordered border-danger " style="padding-left: 86px;width: 950px;height: 35px;" >
+            <thead>
+              <tr>
+                   
+                <th>Producteur</th>
+                <th>Date debue</th>
+                <th>Date fin</th>
+                <th>Ammonitrate(g/ar)</th>
+                <th>Map(g/ar)</th>
+                <th>Sulfat_potasse(g/ar)</th>
+                <th>Nitrat potasse(g/ar)</th>
+                <th>Calcium(g/ar)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% language 'fr' %}
+                {% for order in orderengs %} 
+                         
+              <tr>
+                
+                <td>{{ order.producteur }}</td>
+                <td>{{ order.date1|default_if_none:"" }}</td>
+                <td>{{ order.date2|default_if_none:"" }}</td>
+                <td>{{ order.amm|default_if_none:"" }}</td>
+                <td>{{ order.map|default_if_none:"" }}</td>
+                <td>{{ order.sulf|default_if_none:"" }}</td>
+                <td>{{ order.nitr|default_if_none:"" }}</td>
+                <td>{{ order.calc|default_if_none:"" }}</td>
+                
+               
+                <td><a  href="{% url 'ordereng-update' order.id %}"><img  src="{% static 'img/modifa.png' %}"></a><a  href="{% url 'ordereng-supprime' order.id %}"><img src="{% static 'img/deleter.png' %}"></a>
+                  
+                </td>
+             
+              </tr>
+              
+              {% empty %}
+                  <h6>Pas d'enregistrement</h6> 
+               {% endfor %}
+              {% endlanguage %}
+            
+            </tbody>
+          </table>
+      </main>
+    </div>
+    </div>
+    </div>
+
+
+
+  
+  {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% block body %}
+
+
+
+    <div class="container">
+        <center>  
+    <h3>Creation & modification</h3>
+    
+    <form method="post" action="" method="POST" novalidate>
+        {%  csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success" type="submit" value="Valider"></form>
+        <a href="{% url 'fertiCalcstocks' %}">
+        <input class="btn btn-danger mt-2" type="submit" value="Annuler"></a>
+    </div>
+    <center> 
+
+
+    
+    {% endblock body %}

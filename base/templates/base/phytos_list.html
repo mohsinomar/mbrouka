@@ -1,0 +1,103 @@
+{% extends 'base/base.html' %}
+{% block body %}
+{% load static %}
+{% load i18n %}
+<hr>
+    <div class="col text-center">
+      <div class="content-header">
+   
+        <h1 class="text-center">Domaine    {{ request.user }}</h1>
+        
+    
+    {% if request.user.is_authenticated %}
+<div class="text-align">
+    <a href="{% url 'logout' %}">Deconnexion</a>
+    {% else %}
+    <a href="{% url 'login' %}"></a>
+    {% endif %}
+  </div> 
+</div>
+  
+
+      <hr>
+     
+  </div>   
+           
+            
+              <div class="boxova">
+      <h5>Suivi des traitements</h5>
+              
+            </div>
+          
+      
+      
+        
+            <div class="col text-center">     
+  
+    <a href="{% url 'phyto-create' %}" >
+      <button class="text-center mt-2 btn-primary" style="margin: 25px;"> Ajouter une operation </button></a>
+</div>
+      <div class="row">
+        <div class="container">       
+          <table class="table1 table-bordered border-danger " style="padding-left: 86px;width: 950px;height: 35px;" >
+            <thead>
+              <tr>
+                   
+                <th>Domaine</th>
+                <th>Date</th>
+                <th>Varieté</th>
+                <th>Parcelle</th>
+                <th>Horaire</th>
+                <th>Produit</th>
+                <th>Matiére active</th>
+                <th>Ennemi ciblé</th>
+                <th>Quntité produit</th>
+                <th>Outil utilisé</th>
+                <th>Ouvrier</th>
+                <th>Température</th>
+                <th>Météo</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% language 'fr' %}
+                {% for phyto in phytos %} 
+                         
+              <tr>
+                
+                <td>{{ phyto.domaine }}</td>
+                <td>{{ phyto.date|default_if_none:"" }}</td>
+                <td>{{ phyto.varieté|default_if_none:"" }}</td>
+                <td>{{ phyto.parcelle|default_if_none:"" }}</td>
+                <td>{{ phyto.horaire|default_if_none:"" }}</td>
+                <td>{{ phyto.produit|default_if_none:"" }}</td>
+                <td>{{ phyto.matiére_avtive|default_if_none:"" }}</td>
+                <td>{{ phyto.ennemi_ciblé|default_if_none:"" }}</td>
+                <td>{{ phyto.qté_produits }}</td>
+                <td>{{ phyto.outiel|default_if_none:"" }}</td>
+                <td>{{ phyto.ouvries|default_if_none:"" }}</td>
+                <td>{{ phyto.temperature|default_if_none:"" }}°</td>
+                <td>{{ phyto.météo }}</td>
+               
+                <td><a  href="{% url 'phyto-update' phyto.id %}"><img  src="{% static 'img/modifa.png' %}"></a><a  href="{% url 'phyto-supprime' phyto.id %}"><img src="{% static 'img/deleter.png' %}"></a>
+                  
+                </td>
+             
+              </tr>
+              
+              {% empty %}
+                  <h6>Pas d'enregistrement</h6> 
+               {% endfor %}
+              {% endlanguage %}
+            
+            </tbody>
+          </table>
+      </main>
+    </div>
+    </div>
+    </div>
+
+
+
+  
+  {% endblock %}

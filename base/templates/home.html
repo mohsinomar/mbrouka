@@ -1,0 +1,474 @@
+
+{% load static %}
+
+
+
+    <!--style>
+      .title {
+        font-family: helvetica;
+        color: rgb(236, 13, 143);
+        font-size: 50px;
+        text-align: center;
+        width: 100%;
+        text-shadow: 6px 6px 6px #74a9e6;
+        display: block;
+        font-weight: bolder;
+      }
+      .gallery {
+  --s: 150px; /* the image size */
+  
+  display: grid;
+  transform-style: preserve-3d;
+  animation: r 15s linear infinite;
+  position: relative;
+}
+@keyframes r {
+  0% {transform: perspective(450px) rotateX(-100deg) rotate(0deg)}
+  to {transform: perspective(450px) rotateX(-100deg) rotate(-360deg)}
+}
+.gallery > img {
+  grid-area: 1/1;
+  width: var(--s);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(var(--_a)) translateY(120%) rotateX(90deg);
+}
+.gallery > img:nth-child(1) {--_a: 0deg}
+.gallery > img:nth-child(2) {--_a: 60deg}
+.gallery > img:nth-child(3) {--_a: 120deg}
+.gallery > img:nth-child(4) {--_a: 180deg}
+.gallery > img:nth-child(5) {--_a: 240deg}
+.gallery > img:nth-child(6) {--_a: 300deg}
+
+.gallery::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  clip-path: polygon(50% 0,calc(50% + .866*50%) 25%,calc(50% + .866*50%) 75%,50% 100%,calc(50% - .866*50%) 75%,calc(50% - .866*50%) 25%);
+  background: #000000;
+  transform: translateZ(calc(var(--s)/2)) rotate(90deg);
+}
+
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #1db643;
+  overflow: hidden;
+}
+
+    </style>
+ 
+ 
+  <hr>
+  <div style="color: darkred;">{{title}}</div>
+  <div class="gallery">
+    <img src="https://picsum.photos/id/1059/300/300" alt="many clothes and pictures">
+    <img src="https://picsum.photos/id/1060/300/300" alt="someone preparing artisanal coffee">
+    <img src="https://picsum.photos/id/225/300/300" alt="some tee">
+    <img src="https://picsum.photos/id/163/300/300" alt="an empty table in a restaurant">
+    <img src="https://picsum.photos/id/180/300/300" alt="a laptop with a notebook">
+    <img src="https://picsum.photos/id/20/300/300" alt="a laptop and many books around it">
+  </div>
+  </div-->
+  <style>
+	.table{
+font-size: 80%;
+text-align: center;
+width: 45%;
+margin: auto;
+text-align: center;
+}
+.table1{
+font-size: 80%;
+text-align: center;
+width: 45%;
+margin: auto;
+text-align: center;
+}
+
+
+
+
+
+
+th {
+background-color: #edf5f8;
+color: #000000;
+}
+
+:root {
+	--rotate-speed: 50;
+	--count: 8; /* Default count, the DOM element should override this */
+	--easeInOutSine: cubic-bezier(0.25, 0.88, 0.94, 1.5);
+	--easing: cubic-bezier(0.40, 0.57, 1.000, 1.93);
+}
+
+body {
+	margin: -10;
+}
+
+.void {
+	width: 100%;
+	max-width: 1024px;
+	margin: auto;
+	position: relative;
+	aspect-ratio: 1 / 1;
+}
+ul:hover * {
+	animation-play-state: paused;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	outline: 2px dotted magenta;
+	z-index: 1;
+}
+li {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+/* 	outline: 2px dashed cyan; */
+	width: 100%;
+	animation: rotateCW calc(var(--rotate-speed) * 0.5s) var(--easing) infinite;
+}
+.card {
+	width: fit-content;
+	height:fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 01px 1px;
+	gap: 8px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 16px 32px rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+	font-family: 'Inter', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #535062;
+	animation: rotateCCW calc(var(--rotate-speed) * 0.5s) var(--easing) infinite;
+}
+a {
+	text-decoration: none;
+	color: unset;
+}
+
+
+
+li:nth-child(2), li:nth-child(2) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -1s);
+}
+li:nth-child(3), li:nth-child(3) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -2s);
+}
+li:nth-child(4), li:nth-child(4) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -3s);
+}
+li:nth-child(5), li:nth-child(5) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -4s);
+}
+li:nth-child(6), li:nth-child(6) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -5s);
+}
+li:nth-child(7), li:nth-child(7) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -6s);
+}
+li:nth-child(8), li:nth-child(8) .card {
+	animation-delay: calc((var(--rotate-speed)/var(--count)) * -7s);
+}
+
+@keyframes rotateCW {
+	from {
+		transform: translate3d(0px, -50%, -1px) rotate(-45deg);
+	}
+	to {
+		transform: translate3d(0px, -50%, 0px) rotate(-315deg);
+	}
+}
+@keyframes rotateCCW {
+	from {
+		transform: rotate(45deg);
+	}
+	to {
+		transform: rotate(315deg);
+	}
+}
+@keyframes pulseGlow {
+	from {
+		background-size: 60%;
+	}
+	to {
+		background-size: 100%;
+	}
+}
+
+/*.center-circle {
+	position: absolute;
+	width: 80px;
+	aspect-ratio: 1 / 1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: #2e8b2e;
+	box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+	border-radius: 50%;
+	@keyframes rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
+}
+}
+.second-circle {
+	position: absolute;
+	width: 40%;
+	aspect-ratio: 1 / 1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: #2e8b2e;
+	opacity: 0.5;
+	box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+	border-radius: 50%;
+}
+.last-circle {
+	position: absolute;
+	width: 66%;
+	aspect-ratio: 1 / 1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background:#2e8b2e;
+	opacity: 0.25;
+	box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+	border-radius: 50%;
+}
+.last-circle1 {
+	position: absolute;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: #2e8b2e;
+	opacity: 0.25;
+	box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+	border-radius: 50%;
+}*/
+.crop {
+	-webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1));
+}
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 50%;
+	animation: pulseGlow 5s linear infinite alternate;
+	background-position: 100% 50%;
+	background-repeat: no-repeat;
+	background-image: radial-gradient(100% 50% at 100% 50%, rgba(60, 26, 229, 0.25) 0%, rgba(60, 26, 229, 0.247904) 11.79%, rgba(59, 26, 229, 0.241896) 21.38%, rgba(58, 26, 229, 0.2324) 29.12%, rgba(57, 26, 229, 0.219837) 35.34%, rgba(55, 26, 229, 0.20463) 40.37%, rgba(53, 26, 229, 0.1872) 44.56%, rgba(51, 26, 229, 0.16797) 48.24%, rgba(48, 26, 229, 0.147363) 51.76%, rgba(46, 26, 229, 0.1258) 55.44%, rgba(44, 26, 229, 0.103704) 59.63%, rgba(41, 26, 229, 0.0814963) 64.66%, rgba(39, 26, 229, 0.0596) 70.88%, rgba(36, 26, 229, 0.038437) 78.62%, rgba(34, 26, 229, 0.0184296) 88.21%, rgba(32, 26, 229, 0) 100%);
+}
+.mask:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 100%;
+	right: 0;
+	display: block;
+	background-image: linear-gradient(180deg, rgba(60, 26, 229, 0) 0%, #3C1AE5 50%, rgba(60, 26, 229, 0) 100%);
+}
+
+.content h2
+{
+          position:absolute;
+          color: #2e05c2;
+          transform: translate(0%,-50%);
+          font-size: 4em;
+}
+.content h2:nth-child(1)
+{
+          color: transparent;
+          
+          -webkit-text-stroke:2px rgb(0, 0, 0)
+}
+.content h2:nth-child(2)
+{
+          color:rgb(4, 245, 56);
+          animation: animate 3s ease-in-out infinite;
+}
+@keyframes animate
+{
+          0%,100%
+          {
+                    clip-path: polygon(0% 60%, 15% 44%, 32% 50%, 
+                          54% 60%, 70% 61%, 84% 59%, 100% 52%,
+                          100% 100%, 0% 100%);
+          }
+          50%
+          {
+                    clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 
+                    51% 62%, 67% 50%, 84% 45%, 100% 46%,
+                    100% 100%, 0% 100%);
+          }
+}
+.contenta {
+	width: 100%;
+	max-width: 600px;
+	padding: 10px 10px;
+	box-sizing: border-box;
+	text-align: center;
+  
+}
+
+.avatar {
+	width: 50%;
+	height: 60px;
+	box-sizing: border-box;
+	border: 5px rgb(235, 252, 4) solid;
+	border-radius: 15%;
+	overflow: hidden;
+	box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.664);
+	transform: translatey(10px);
+	animation: float 6s ease-in-out infinite;
+          color: #f74a05;
+           cursor: pointer;
+	 background: hsl(44, 83%, 73%);
+	 font-size: larger;
+	
+  
+	
+}
+.elementa {
+    background-color:  hsl(44, 83%, 73%);
+    
+}
+.elementa {animation: shaking 2s infinite;}
+      @keyframes shaking {
+         0% {transform: translateX(0) rotate(0deg);}
+         10% {transform: translateX(1px) rotate(1deg);}
+         15% {transform: translateX(0px) rotate(0deg);}
+         3% {transform: translateX(-1px) rotate(-1deg);}
+         1% {transform: translateX(0px) rotate(0deg);}
+      }
+
+      .title {
+font-family: helvetica;
+color:rgb(43, 27, 185);
+font-size: 20px;
+
+text-shadow: 6px 6px 6px #74a9e6;
+margin-left: -80px;
+font-weight: bolder;
+}
+.table{
+font-size: 80%;
+text-align: center;
+width: 350px;
+margin: auto;
+text-align: center;
+}
+table, th, td {
+  border: 1px solid;
+}
+  </style>
+	
+<body>
+<div class="container-fluid">
+	<div class="void" id="void">
+		<div class="content me-5">
+
+			<h2 class="text-center me-5">COOPERATIVE M'BROUKA</h2>
+			<h2 class="text-center me-5">COOPERATIVE M'BROUKA</h2>
+			<br>
+			<br>
+		</div>
+		<a href="{% url 'tasks' %}">
+			<button class="avatar contenta elementa"
+				style="margin: 55px;margin-left: 1%;font-size: 32px;">
+				Entrer ► </button></a>
+		{% if user.is_superuser %}
+		<hr>
+		<table class="table1 table-bordered border-danger mt-1 "
+			style="margin:-120px;margin-top :45px;width: 350px;">
+			<div class="title">Liste des domaines inscrits</div>
+			<thead>
+				<tr>
+					<th>Domaine</th>
+					<th>Mot de passe</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for u in utilisateurs %}
+				<tr>
+					<td>{{u.username}}</td>
+					<td>{{u.password}} </td>
+					{% endfor %}
+					{% endif %}
+				</tr>
+			</tbody>
+		</table>
+
+
+
+
+
+
+		<div class="crop">
+			<ul id="card-list" style="--count: 12;">
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/siege.jpg' %}"></span></a>
+					</div>
+				</li>
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/siege.jpg' %}"></span></a>
+					</div>
+				</li>
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/koto.jpg' %}"></span></a>
+					</div>
+				</li>
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/assir.jpg' %}"></span></a>
+					</div>
+				</li>
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/climo.jpg' %}"></span></a>
+					</div>
+				</li>
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/bann.jpg' %}"></span></a>
+					</div>
+				</li>
+				<li>
+					<div class="card"><a href=""><span class="model-name"><img
+									src="{% static 'img/juso.jpg' %}"></span></a>
+					</div>
+				</li>
+			</ul>
+			<div class="last-circle1"></div>
+			<div class="last-circle"></div>
+			<div class="second-circle"></div>
+		</div>
+
+		<div class="center-circle"><img style="margin: 37px;margin-left: 40px;"
+				>
+		</div>
+		<div>
+		</div>
+</body>

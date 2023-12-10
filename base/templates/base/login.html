@@ -1,0 +1,16 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+
+<h1>Login</h1>
+
+
+<form method="POST"class="boxo" action="" method="POST" novalidate> {% csrf_token %}
+    
+    {{form.as_p}}
+    <input type="submit" value="login">
+    <a href="{% url 'register' %}"><button class="btn btn-danger">Creer un compte" ></button>    </a>
+</form>
+
+
+{% endblock content %}
