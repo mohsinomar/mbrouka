@@ -18,46 +18,40 @@ background-color: aquamarine;
 
 </style>
 
-<div class="bg-light border-right min-vh-50" id="sidebar-wrapper">
-  <div class="list-group list-group-flush overflow-auto vh-50">
-    <ul class="menu">
-      {% if user.is_superuser%}
+
+      
+      <div class="sidebar">
+        {% if user.is_superuser%}
       <a class="nav-link active me-2" style="color:rgb(0, 0, 0);font-size:large;"href="/admin/"><img class="me-2" src="{% static 'img/admino.png' %} ">ADMIN </a>
       {% endif %}
-      <a  href="{% url 'home' %}"class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/home.png' %} " > ACCEUIL</a>
-            <a  href="{% url 'upload_and_display' %}"class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/uplod.png' %} " > Téléchargements</a>
-            <a href="{% url 'tasks' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/parcelle.png' %} " >Fiche-parcelaire</a>
-            <a href="{% url 'orderengs' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/ordr.jpg' %} " >Ordre des engrais</a>
-            <a href="{% url 'fertigations' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/fertir.jpg' %} " >Ferti-irrigation</a>
-            <a href="{% url 'fertiAmmstocks' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/stockeng.png' %} " >Stock-engrais</a>
-            <a href="{% url 'phytos' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/traitm.jpg' %} " >Traitement</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/pesticido.jpg' %} " >Stock-pesticides</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/observ.png' %} " >Observation phytosanitaire</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/invent.jpg' %} " >Inventaire</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Elimination fond des cuves</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de netoyage</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Energie electrique</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Apports en eau</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Traçabilité marché local</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Engrais organique</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de maintenance</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/observ.png' %} " >Observation phytosanitaire</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/invent.jpg' %} " >Inventaire</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Elimination fond des cuves</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de netoyage</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Energie electrique</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Apports en eau</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Traçabilité marché local</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Engrais organique</a>
-            <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de maintenance</a>
-            
-            
-            
-      
-      
-    </ul>
-  </div>
-</div>
+                  <a  href="{% url 'home' %}"class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/home.png' %} " > ACCEUIL</a>
+                  <a  href="{% url 'upload_and_display' %}"class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/uplod.png' %} " > Téléchargements</a>
+                  <a href="{% url 'tasks' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/parcelle.png' %} " >Fiche-parcelaire</a>
+                  <a href="{% url 'orderengs' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/ordr.jpg' %} " >Ordre des engrais</a>
+                  <a href="{% url 'fertigations' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/fertir.jpg' %} " >Ferti-irrigation</a>
+                  <a href="{% url 'fertiAmmstocks' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/stockeng.png' %} " >Stock-engrais</a>
+                  <a href="{% url 'phytos' %}" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/traitm.jpg' %} " >Traitement</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/pesticido.jpg' %} " >Stock-pesticides</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/observ.png' %} " >Observation phytosanitaire</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/invent.jpg' %} " >Inventaire</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Elimination fond des cuves</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de netoyage</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Energie electrique</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Apports en eau</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Traçabilité marché local</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Engrais organique</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de maintenance</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/observ.png' %} " >Observation phytosanitaire</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;"><img src="{% static 'img/invent.jpg' %} " >Inventaire</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Elimination fond des cuves</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de netoyage</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Energie electrique</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Apports en eau</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Traçabilité marché local</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Engrais organique</a>
+                  <a href="#" class="list-group-item  bg-light" style="color: blue;">Registre de maintenance</a>
+                  
+      </div>
 
 <script src="https://blackrockdigital.github.io/startbootstrap-simple-sidebar/vendor/jquery/jquery.min.js"></script>
   <script src="https://blackrockdigital.github.io/startbootstrap-simple-sidebar/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

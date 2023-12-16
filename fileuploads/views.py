@@ -33,10 +33,6 @@ def upload_and_display_files(request):
 
     return render(request, 'upload_and_display.html', {'form': form,'files':files})
 
-
-
-
-
 def delete_matrix(request, pk):
                
        files = UploadedFile.objects.get(pk=pk)

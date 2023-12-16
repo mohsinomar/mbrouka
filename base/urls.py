@@ -58,4 +58,9 @@ urlpatterns = [
     path('ordereng-create/', OrderCreate.as_view(), name='ordereng-create'),
     path('ordereng-update/<int:pk>/',OrderUpdate.as_view(), name='ordereng-update'),
     path('ordereng-supprime/<int:pk>/', OrderDelete.as_view(), name='ordereng-supprime'),
+    ####################################################################################
+    path('export_ammon',export_ammon,name='export_ammon'),
+    
+
+   
 ]

@@ -10,6 +10,44 @@ from django.contrib.auth import login
 from .models import*
 from django.contrib import messages
 from app_auth.views import register
+from django.http import HttpResponse
+import datetime
+import xlwt
+
+import re
+
+def mobile(request):
+    """ Return True if the request comes from a mobile device."""
+
+    MOBILE_AGENT_RE=re.compile(r".*(iphone|mobile|androidtouch)",re.IGNORECASE)
+
+    if MOBILE_AGENT_RE.match(request.META['HTTP_USER_AGENT']):
+        return True
+    else:
+        return False
+
+
+def myfunction(request):
+
+    ...
+    if mobile(request):
+        is_mobile = True
+    else:
+        is_mobile = False
+
+    context = {
+        
+        'is_mobile': is_mobile,
+    }
+    return render(request, 'home.html', context)
+
+
+
+
+
+
+
+
 
 def home(request):
     title = 'Station mabrouka'
@@ -117,6 +155,7 @@ class FertiAmmStockList(LoginRequiredMixin, ListView):
                 title__icontains=search_input)
         context['search_input'] = search_input
         return context
+    
 
 class FertiAmmStockCreate(LoginRequiredMixin, CreateView):
     
@@ -451,3 +490,32 @@ class OrderDelete(LoginRequiredMixin, DeleteView):
     model =OrderEng
     context_object_name = 'ordereng'
     success_url = reverse_lazy('orderengs')
+
+####################################################################################
+def export_ammon(request):          
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=Ammonitrate' + \
+        str(datetime.datetime.now()) + '.xls'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Ammonitrate')
+    row_num = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+    columns = ['domaine','date', 'stock_initial','entree','sortie', 'destination','stock_restant']
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+    font_style = xlwt.XFStyle()
+    rows = Amon.objects.all().values_list(
+        'domaine','date', 's_initial','entree','sortie', 'destination','s_restant')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, str(row[col_num]), font_style)
+    wb.save(response)
+    return response
+
+
+
+
+
+
